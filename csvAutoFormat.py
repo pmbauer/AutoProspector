@@ -4,23 +4,23 @@
 import csv
 import os
 import smtplib
+#import timestampScraper
 
 #define sender's Google authentication info
 gmail_user = "sender@example.com"
-gmail_password = "password123"
-
+gmail_password = "password"
 
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 
 #name of CSV file. Due to above line, no filepath needs defined
-filename = "7.5.2k18.txt"
+filename = "today.txt"
 
 #opens file in read-mode, assigns opened file to variabel 'csvfile'
 csvfile = open(filename, "r")
 
 #initializes variable that calls reader function from csv module
 entryReader = csv.reader(csvfile, delimiter="," )
-
+0
 #prints every element in line (which is a list) on a new line
 row_to_read = next(entryReader)
 
@@ -30,7 +30,7 @@ def send_email(x):
     sent_from = "sender@example.com"
     to = "recipient@example.com"
     subject = str(x[1])
-    body = "\nTITLE: " + x[1] + "\n\nURL: " + x[2] + "\n\nPRICE: $" + str(x[3]) + "\n\nVENDOR: " + x[4] + "\n\nENDING DATE: " + str(x[6])
+    body = "\nTITLE: " + x[1] + "\n\nURL: https://www.ebay.com/itm/" + x[0] + "\n\nPRICE: $" + str(x[3]) + "\n\nVENDOR: " + x[4] + "\n\nENDING DATE: " + str(x[6])
     email_text = """
     From: {}
     To: {}
@@ -57,12 +57,8 @@ try:
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
     server.login(gmail_user, gmail_password)
-    #Initial send_email() function call
-    send_email(row_to_read)
+    send_email(row_to_read) #Initial send_email() function call
 
 except:
-    print("ERROR: Connection could not be established.")
-
-    #def collect_listing_start_date(x):
-    #   epoch_date = 
+    print("ERROR: Could not send email. Check formatting of input file and network connection.")
 
