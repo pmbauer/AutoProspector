@@ -42,27 +42,31 @@ def send_email(x):
 
     \nThis is an automated message.
     """)
-    #.format(gmail_user, recipient, body)
 
     server.sendmail(gmail_user, recipient, email_text)
     print(email_text)
 
     #This iterates to the next row in the CSV file
     row_to_read = next(entry_reader)
-    try:
-        #Recursive method call using above 'row_to_read' variable as argument
-        send_email(row_to_read)
-    except:
-        #Might want to change this to an error statement, as it could mislead you into thinking that the emails have been sent when in actuality a connection issue stopped the process.
-        print("All emails sent.")
-    
 
-#If connection to server is made, send_email() method is run. Otherwise, an error is thrown.
+    while row_to_read != False:
+        send_email(row_to_read)
+    else:
+        print("All emails sent.")
+        exit()
+
+#If connection to server is made, send_email() method is run. Otherwise, an authentication exception is raised.
 try:
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
     server.login(gmail_user, gmail_password)
     send_email(row_to_read) #Initial send_email() function call
 
-except:
-   print("ERROR: Could not send email. Check formatting of input file and/or network connection.")
+except smtplib.SMTPAuthenticationError:
+    print("ERROR: Could not send email(s). Verify authentication information and/or network connection.")
+
+#After script has run (successfully or unsuccessfully), prompt user to exit
+finally:
+    print("Press Enter to exit.")
+    input()
+
