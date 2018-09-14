@@ -25,7 +25,6 @@ row_to_read = next(entry_reader)
 #Extracts info form row_to_read list object, inserts it into body, and sends the info to the specified ("to") address, then closes the server.
 def send_email(x):
     recipient = "recipient@example.com"
-    #body = "\nTITLE: " + x[1] + "\n\nURL: https://www.ebay.com/itm/" + x[0] + "\n\nPRICE: $" + str(x[3]) + "\n\nVENDOR: " + x[4] + "\n\nENDING DATE: " + str(x[6])
     email_text = (f"""
     From: {gmail_user}
     To: {recipient}
