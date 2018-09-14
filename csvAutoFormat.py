@@ -22,7 +22,7 @@ entry_reader = csv.reader(csv_file, delimiter="," )
 #prints every element in line (which is a list) on a new line
 row_to_read = next(entry_reader)
 
-#Extracts info form row_to_read list object, inserts it into body, and sends the info to the specified ("to") address, then closes the server.
+#Extracts info from row_to_read list object, inserts it into body, and sends the info to the specified ("to") address, then closes the server.
 def send_email(x):
     recipient = "recipient@example.com"
     email_text = (f"""
