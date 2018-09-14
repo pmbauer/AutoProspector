@@ -12,4 +12,4 @@ In case you can't tell, I haven't yet learned proper documentation techniques.
 
 I should change that at some point.
 
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
