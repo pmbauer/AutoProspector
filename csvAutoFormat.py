@@ -1,6 +1,6 @@
 #Reads text from CSV file, formats it & sends via Gmail
 
-#import modules
+
 import csv
 import os
 import smtplib
