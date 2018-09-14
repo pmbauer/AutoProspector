@@ -12,11 +12,12 @@ In case you can't tell, I haven't yet learned proper documentation techniques.
 
 I should change that at some point.
 
-¯\\__(ツ)__/¯
+¯\\_(ツ)_/¯
 
 
 OH, and before you ask...
-"HEY, what's that "epochConverter" file?
+
+"**_HEY_**, what's that 'epochConverter' file?"
 
 That's the base code for a future feature I want to implement. It's not currently used.
 
