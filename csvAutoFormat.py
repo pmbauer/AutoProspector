@@ -6,8 +6,8 @@ import os
 import smtplib
 
 #define sender's Google authentication info
-gmail_user = "user@example.com"
-gmail_password = "password"
+gmail_user = "holden@newlifescientific.com"
+gmail_password = "33walrusesandrats1999"
 
 #Name & path of CSV file. File must be in the same directory as the script, and must be named list.txt. Janky, I know. I'm going to fix that.
 file_dir = os.path.dirname(os.path.realpath('__file__'))
@@ -24,7 +24,7 @@ row_to_read = next(entry_reader)
 
 #Extracts info from row_to_read list object, inserts it into body, and sends the info to the specified ("to") address, then closes the server.
 def send_email(x):
-    recipient = "recipient@example.com"
+    recipient = "holden@newlifescientific.com"
     email_text = (f"""
     From: {gmail_user}
     To: {recipient}
@@ -67,6 +67,6 @@ except smtplib.SMTPAuthenticationError:
 
 #After script has run (successfully or unsuccessfully), prompt user to exit
 finally:
-    print("Press Enter to exit.")
-    input()
+    print("Exiting...")
+    exit()
 
